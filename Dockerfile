@@ -6,7 +6,7 @@ RUN npm install
 COPY ./facade-app .
 RUN npm run build
 
-FROM openresty/openresty:alpine
+FROM openresty/openresty:1.25.3.2-1-alpine
 COPY --from=BUILDER /usr/src/app/build /usr/share/nginx/html/
 COPY nginx.conf /usr/local/openresty/nginx/conf
 COPY lua-modules/vulnerableapp_utility.lua ./vulnerableapp_utility.lua
